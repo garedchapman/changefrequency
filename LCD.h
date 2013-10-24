@@ -24,6 +24,19 @@ void writeString(char * string);
 
 void scrollString(char * string1, char * string2);
 
+
+
+void LCD_write_8(char byteToSend);
+
+void LCD_write_4(char LCDDATA);
+
+void SPI_send(char byteToSend);
+
+void set_SS_hi(void);
+
+void set_SS_lo(void);
+
+
 // Here are some helper functions from my LCD.c
 // I don't expose these in my header, but may be helpful to you.
 
