@@ -167,24 +167,61 @@ void writeDataByte(char dataByte)
     delayMilli();
 }
 
-void rotate_string(char string[])
-{
-	int i = 0;
-	int j = 0;
 
-	int arraylength = 0;
-	while(string[j] != 0)
-	{
-		arraylength++;
-		j++;
-
-	}
-	char firstvalue = string[i];
-	for (i = 0;i<arraylength; i++)
-	{
-		string[i]=string[i+1];
-	}
-
-	string[arraylength-1] = firstvalue;
+void secondLine(){
+        writeCommandByte(0xa8);
 }
+
+void firstLine(){
+        writeCommandByte(0x80);
+}
+
+
+void printCharacter(char asciiChar){
+        writeDataByte(asciiChar);
+}
+
+void print(char * string){
+        int stringTracker = 0;
+
+        while (stringTracker < 8 && *string != 0x00){
+                printCharacter(*string);
+                string++;
+                stringTracker++;
+        }
+
+}
+
+char * scroll_help(char * beginning, char * current){
+        if(*current == 0){
+                current = beginning;
+        }
+        char * display = current;
+        char position = 0;
+        for (position = 0; position < 8; position++){
+                writeDataByte(*display);
+                display++;
+                if(*display == 0){
+                        display = beginning;
+                }
+        }
+        return current + 1;
+}
+
+
+void messageScroll(char * string1, char * string2){
+        char * start1 = string1;
+        char * current1 = string1;
+        char * start2 = string2;
+        char * current2 = string2;
+        while(1){
+                firstLine();
+                current1 = scroll_help(start1, current1);
+                secondLine();
+                current2 = scroll_help(start2, current2);
+                _delay_cycles(10000);
+        }
+}
+
+
 

@@ -34,13 +34,14 @@ void set_SS_hi(void);
 
 void set_SS_lo(void);
 
-void rotate_string1(void);
+void print(char * string);
 
-//void rotate_string2(Message2[]);
+void printCharacter(char asciiChar);
 
+void messageScroll(char * string1, char * string2);
 
-// Here are some helper functions from my LCD.c
-// I don't expose these in my header, but may be helpful to you.
+char * scroll_help(char * start, char * current);
+
 
 void writeDataByte(char dataByte);
 void writeCommandNibble(char commandNibble);
