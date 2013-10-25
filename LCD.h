@@ -24,8 +24,6 @@ void writeString(char * string);
 
 void scrollString(char * string1, char * string2);
 
-
-
 void LCD_write_8(char byteToSend);
 
 void LCD_write_4(char LCDDATA);
@@ -35,6 +33,10 @@ void SPI_send(char byteToSend);
 void set_SS_hi(void);
 
 void set_SS_lo(void);
+
+void rotate_string1(void);
+
+//void rotate_string2(Message2[]);
 
 
 // Here are some helper functions from my LCD.c

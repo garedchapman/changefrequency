@@ -8,7 +8,7 @@
 #include "LCD.h"
 #define RS_MASK 0x40
 char LCDCON;
-
+char pointer = 0;
 void INITSPI(void)
 {
 	UCB0CTL1 |= UCSWRST;
@@ -167,4 +167,24 @@ void writeDataByte(char dataByte)
     delayMilli();
 }
 
+void rotate_string(char string[])
+{
+	int i = 0;
+	int j = 0;
+
+	int arraylength = 0;
+	while(string[j] != 0)
+	{
+		arraylength++;
+		j++;
+
+	}
+	char firstvalue = string[i];
+	for (i = 0;i<arraylength; i++)
+	{
+		string[i]=string[i+1];
+	}
+
+	string[arraylength-1] = firstvalue;
+}
 
