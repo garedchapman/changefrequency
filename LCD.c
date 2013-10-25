@@ -219,7 +219,7 @@ void messageScroll(char * string1, char * string2){
                 current1 = scroll_help(start1, current1);
                 secondLine();
                 current2 = scroll_help(start2, current2);
-                _delay_cycles(10000);
+                _delay_cycles(10000); //add test comment
         }
 }
 
