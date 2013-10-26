@@ -1,6 +1,7 @@
 #include <msp430.h> 
 #include "LCD.h"
 #include "buttons.h"
+#include "alter_frequency.h"
 /*
  * C2C Gared Chapman
  * Lab 4 - LCD Device Driver in C
@@ -17,6 +18,7 @@ char * resultmessage;
 int main(void) {
     WDTCTL = WDTPW | WDTHOLD;	// Stop watchdog timer
 
+    alter1MHz();
     INITSPI();
     LCDinit();
     LCDclear();
